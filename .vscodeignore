@@ -1,0 +1,8 @@
+.vscode/**
+.git/**
+.gitignore
+*.vsix
+.vsix-stage/**
+install.ps1
+build-vsix.ps1
+node_modules/**

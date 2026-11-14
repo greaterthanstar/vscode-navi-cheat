@@ -1,0 +1,141 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Navi Cheat Sheet",
+  "scopeName": "source.navi-cheat",
+  "patterns": [
+    { "include": "#comment" },
+    { "include": "#tags" },
+    { "include": "#dependency" },
+    { "include": "#description" },
+    { "include": "#variable_definition" },
+    { "include": "#command_tokens" }
+  ],
+  "repository": {
+    "comment": {
+      "name": "comment.line.semicolon.navi-cheat",
+      "match": "^(;).*$",
+      "captures": {
+        "1": { "name": "punctuation.definition.comment.navi-cheat" }
+      }
+    },
+    "tags": {
+      "name": "meta.tags.navi-cheat",
+      "match": "^(%)(.*)$",
+      "captures": {
+        "1": { "name": "keyword.control.directive.tag.navi-cheat" },
+        "2": {
+          "patterns": [
+            {
+              "name": "entity.name.tag.navi-cheat",
+              "match": "[^,\\s]+"
+            },
+            {
+              "name": "punctuation.separator.comma.navi-cheat",
+              "match": ","
+            }
+          ]
+        }
+      }
+    },
+    "dependency": {
+      "name": "meta.dependency.navi-cheat",
+      "match": "^(@)(.*)$",
+      "captures": {
+        "1": { "name": "keyword.control.import.navi-cheat" },
+        "2": { "name": "entity.name.tag.dependency.navi-cheat" }
+      }
+    },
+    "description": {
+      "name": "meta.description.navi-cheat",
+      "match": "^(#)\\s*(.*)$",
+      "captures": {
+        "1": { "name": "keyword.control.description.navi-cheat" },
+        "2": {
+          "name": "comment.line.documentation.description.navi-cheat",
+          "patterns": [
+            { "include": "#placeholder" }
+          ]
+        }
+      }
+    },
+    "variable_definition": {
+      "name": "meta.variable-definition.navi-cheat",
+      "match": "^(\\$)\\s*([a-zA-Z0-9_]+)\\s*(:)\\s*(.*)$",
+      "captures": {
+        "1": { "name": "keyword.control.variable.navi-cheat" },
+        "2": { "name": "variable.other.env.definition.navi-cheat" },
+        "3": { "name": "keyword.operator.assignment.navi-cheat" },
+        "4": {
+          "patterns": [
+            { "include": "#navi_flags" },
+            { "include": "#command_tokens" }
+          ]
+        }
+      }
+    },
+    "command_tokens": {
+      "patterns": [
+        { "include": "#placeholder" },
+        { "include": "#strings" },
+        { "include": "#shell_variables" },
+        { "include": "#flags" },
+        { "include": "#operators" },
+        { "include": "#command_word" }
+      ]
+    },
+    "placeholder": {
+      "name": "meta.placeholder.navi-cheat",
+      "match": "(<)([a-zA-Z0-9_\\-]+)(>)",
+      "captures": {
+        "1": { "name": "keyword.operator.placeholder.begin.navi-cheat" },
+        "2": { "name": "variable.parameter.placeholder.navi-cheat" },
+        "3": { "name": "keyword.operator.placeholder.end.navi-cheat" }
+      }
+    },
+    "navi_flags": {
+      "name": "constant.language.flag.navi-cheat",
+      "match": "---\\s*(?:--(?:column|headers|delimiter|map|prevent-extra|fzf-overrides|expand|multi)\\b[^-]*)+"
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.navi-cheat",
+          "begin": "\"",
+          "end": "\"|$",
+          "patterns": [
+            {
+              "name": "constant.character.escape.navi-cheat",
+              "match": "`."
+            },
+            { "include": "#placeholder" },
+            { "include": "#shell_variables" }
+          ]
+        },
+        {
+          "name": "string.quoted.single.navi-cheat",
+          "begin": "'",
+          "end": "'|$",
+          "patterns": [
+            { "include": "#placeholder" }
+          ]
+        }
+      ]
+    },
+    "shell_variables": {
+      "name": "variable.other.env.navi-cheat",
+      "match": "\\$(?:[a-zA-Z_][a-zA-Z0-9_]*|\\{[^}]+\\}|_)"
+    },
+    "flags": {
+      "name": "constant.other.option.navi-cheat",
+      "match": "(?<=\\s)(?:--?[a-zA-Z0-9][a-zA-Z0-9_-]*)"
+    },
+    "operators": {
+      "name": "keyword.operator.pipe.navi-cheat",
+      "match": "&&|\\|\\||\\||;"
+    },
+    "command_word": {
+      "name": "support.function.command.navi-cheat",
+      "match": "(?:^(?![%#@$;\\s])|(?<=\\|\\s|\\|\\|\\s|&&\\s|;\\s))[a-zA-Z0-9_./\\\\:-]+"
+    }
+  }
+}

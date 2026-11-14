@@ -1,0 +1,52 @@
+{
+  "name": "navi-cheat-syntax",
+  "displayName": "Navi Cheat Sheet Syntax",
+  "description": "Syntax highlighting for navi .cheat files",
+  "version": "1.0.1",
+  "publisher": "greaterthanstar",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/greaterthanstar/vscode-navi-cheat.git"
+  },
+  "bugs": {
+    "url": "https://github.com/greaterthanstar/vscode-navi-cheat/issues"
+  },
+  "homepage": "https://github.com/greaterthanstar/vscode-navi-cheat#readme",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "navi",
+    "cheat",
+    "cheatsheet",
+    "syntax",
+    "highlighting"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "navi-cheat",
+        "aliases": [
+          "Navi Cheat Sheet",
+          "navi",
+          "cheat"
+        ],
+        "extensions": [
+          ".cheat"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "navi-cheat",
+        "scopeName": "source.navi-cheat",
+        "path": "./syntaxes/navi-cheat.tmLanguage.json"
+      }
+    ]
+  }
+}
