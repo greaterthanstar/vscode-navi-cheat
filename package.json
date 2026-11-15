@@ -1,10 +1,14 @@
 {
   "name": "navi-cheat-syntax",
   "displayName": "Navi Cheat Sheet Syntax",
-  "description": "Syntax highlighting for navi .cheat files",
-  "version": "1.0.1",
+  "description": "Syntax highlighting and hover documentation for navi .cheat files",
+  "version": "1.1.0",
   "publisher": "greaterthanstar",
   "license": "MIT",
+  "main": "./extension.js",
+  "activationEvents": [
+    "onLanguage:navi-cheat"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/greaterthanstar/vscode-navi-cheat.git"

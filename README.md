@@ -15,3 +15,4 @@ Syntax highlighting and language support for [navi](https://github.com/denisidor
 ## License
 
 MIT
+

@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 $sourceDir = $PSScriptRoot
-$vsixPath = Join-Path $sourceDir "navi-cheat-syntax-1.0.1.vsix"
+$vsixPath = Join-Path $sourceDir "navi-cheat-syntax-1.1.0.vsix"
 $stageDir = Join-Path $sourceDir ".vsix-stage"
 
 Get-ChildItem -Path $sourceDir -Filter "*.vsix" | Remove-Item -Force
@@ -9,6 +9,7 @@ if (Test-Path $stageDir) { Remove-Item -Recurse -Force $stageDir }
 New-Item -ItemType Directory -Path "$stageDir\extension\syntaxes" -Force | Out-Null
 
 Copy-Item "$sourceDir\package.json" "$stageDir\extension\package.json"
+Copy-Item "$sourceDir\extension.js" "$stageDir\extension\extension.js"
 Copy-Item "$sourceDir\language-configuration.json" "$stageDir\extension\language-configuration.json"
 Copy-Item "$sourceDir\README.md" "$stageDir\extension\README.md"
 Copy-Item "$sourceDir\LICENSE" "$stageDir\extension\LICENSE"
@@ -20,6 +21,7 @@ $contentTypes = @'
 <?xml version="1.0" encoding="utf-8"?>
 <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
   <Default Extension=".json" ContentType="application/json" />
+  <Default Extension=".js" ContentType="application/javascript" />
   <Default Extension=".md" ContentType="text/markdown" />
   <Default Extension=".vsixmanifest" ContentType="text/xml" />
 </Types>
@@ -30,9 +32,9 @@ $manifest = @'
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Language="en-US" Id="navi-cheat-syntax" Version="1.0.1" Publisher="greaterthanstar" />
+    <Identity Language="en-US" Id="navi-cheat-syntax" Version="1.1.0" Publisher="greaterthanstar" />
     <DisplayName>Navi Cheat Sheet Syntax</DisplayName>
-    <Description xml:space="preserve">Syntax highlighting for navi .cheat files</Description>
+    <Description xml:space="preserve">Syntax highlighting and hover documentation for navi .cheat files</Description>
     <Tags>navi,cheat,cheatsheet,syntax,highlighting</Tags>
     <Categories>Programming Languages</Categories>
     <GalleryFlags>Public</GalleryFlags>
