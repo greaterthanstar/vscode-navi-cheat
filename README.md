@@ -1,6 +1,9 @@
 # Navi Cheat Sheet Syntax for VS Code
 
-Syntax highlighting and language support for [navi](https://github.com/denisidoro/navi) `.cheat` files.
+Syntax highlighting and language support for the [navi](https://github.com/denisidoro/navi) console cheatsheet tool's `.cheat` files.
+
+<img width="1902" height="822" alt="image" src="https://github.com/user-attachments/assets/b4fa0b27-5b07-4d80-ae0d-931576890b33" />
+
 
 ## Features
 
